@@ -1,25 +1,21 @@
-# NestJs x Supabase REST API Starter Kit
-This project will help you create a full REST API using NestJS and Supabase.
+# Brevlin API
 
-# What is included inside?
+## Description
 
-- Example for building a REST API with NestJS and Supabase
+API pour l'APP Brevlin
 
-# How to setup:
+## Technologies
 
-You can setup this API locally in 4 steps:
+- Node.js
+- NestJS
+- Supabase (PostgreSQL)
 
-1. Fork this repository
-   
-2. Create a Supabase project if you don't have one
-   
-3. Create .env file in root directory:
-   
-4. Add these secrets in your .env file:
+## Diagramme de l'écosystème
+
+```mermaid
+graph TD
+    A[APP] -->|Requête HTTP| B((API NestJS))
+    B -->|Requête SQL| C((Supabase))
+    C -->|Réponse SQL| B
+    B -->|Réponse HTTP| A
 ```
- SUPABASE_URL
- SUPABASE_KEY
-```
-
-# Feedback
-Found a bug or have a suggestion? Please contact me on X [@rokasdam](https://twitter.com/rokasdam).
