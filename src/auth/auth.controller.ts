@@ -22,4 +22,6 @@ export class AuthController {
   async signOut() {
     return this.authService.signOut();
   }
+
+  // API Endpoint : POST http://localhost:3000/auth/signup
 }
