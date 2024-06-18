@@ -10,34 +10,26 @@ export class AuthService {
     this.supabase = supabaseClient.getInstance();
   }
 
-  async signUp(email: string, password: string): Promise<{ user: User; session: Session; } | AuthError> {
+  async signUp(email: string, password: string) {
     const { data, error } = await this.supabase.auth.signUp({ email, password, options: {
       emailRedirectTo: 'http://localhost:3000/auth/verify',
     } });
-
-    console.log(data, error);
     
-
     if (error) {
-      console.log(error);
       return error;
     }
 
-    console.log(data);
     return data;
   }
 
-  async verifyIdentity(email: string, token: string, type: EmailOtpType) {
-    const { error, data } = await this.supabase.auth.verifyOtp({email, token, type})
+  async verifyIdentity(token: string, type: EmailOtpType) {
+    const { error, data } = await this.supabase.auth.verifyOtp({type, token_hash: token})
     
-    console.log(error, data);
+    console.log('error', error);
     
 
-    if (error) {
-      return error;
-    } else {
-      return data;
-    }
+    if(error) throw error;
+    return data;
   }
 
   async signIn(email: string, password: string) {

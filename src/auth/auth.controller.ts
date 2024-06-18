@@ -7,13 +7,13 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('signup')
-  async signUp(@Body('email') email: string, @Body('password') password: string, @Res() res: Response) {
+  async signUp(@Body('email') email: string, @Body('password') password: string) {
     return this.authService.signUp(email, password);
   }
 
   @Post('verify')
-  async verifyIdentity(@Body('email') email: string, @Body('token') token: string, @Body('type') type: EmailOtpType) {
-    return this.authService.verifyIdentity(email, token, type);
+  async verifyIdentity(@Body('token') token: string, @Body('type') type: EmailOtpType) {
+    return this.authService.verifyIdentity(token, type);
   }
 
   @Post('signin')
