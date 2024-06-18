@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { SupabaseClient } from '../supabase/supabaseClient';
 import { AuthError, AuthResponse, EmailOtpType, Session, SupabaseClient as SupabaseClientType, User, VerifyOtpParams } from "@supabase/supabase-js";
-import SupabaseAuthRes from 'src/Types/SupabaseAuthRes';
 
 @Injectable()
 export class AuthService {
@@ -15,6 +14,9 @@ export class AuthService {
     const { data, error } = await this.supabase.auth.signUp({ email, password, options: {
       emailRedirectTo: 'http://localhost:3000/auth/verify',
     } });
+
+    console.log(data, error);
+    
 
     if (error) {
       console.log(error);
