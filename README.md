@@ -19,3 +19,8 @@ graph TD
     C -->|Réponse SQL| B
     B -->|Réponse HTTP| A
 ```
+
+
+## A faire
+
+- Si la personne est déjà en attente d'inscription, ça ne lui envoie pas de mail
