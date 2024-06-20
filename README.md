@@ -24,3 +24,8 @@ graph TD
 ## A faire
 
 - Si la personne est déjà en attente d'inscription, ça ne lui envoie pas de mail
+- Auth : Bouton chargement
+- Agencer la page d'inscription
+- Clean le code
+- Modifier le mail de confirmation
+- Page verify

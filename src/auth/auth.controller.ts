@@ -12,8 +12,12 @@ export class AuthController {
   }
 
   @Post('verify')
-  async verifyIdentity(@Body('token') token: string, @Body('type') type: EmailOtpType) {
-    return this.authService.verifyIdentity(token, type);
+  // async verifyIdentity(@Body('email') email: string, @Body('token') token: string, @Body('type') type: EmailOtpType) {
+  //   return this.authService.verifyIdentity(email, token, type);
+  // }
+
+  async verifyIdentity(@Body('token') token: string) {
+    return this.authService.verifyIdentity(token);
   }
 
   @Post('signin')
