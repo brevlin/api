@@ -1,6 +1,5 @@
-import { Controller, Post, Body, HttpCode, Res, HttpStatus } from '@nestjs/common';
+import { Controller, Post, Body, HttpCode } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { EmailOtpType, MobileOtpType } from '@supabase/supabase-js';
 
 @Controller('auth')
 export class AuthController {
@@ -12,12 +11,9 @@ export class AuthController {
   }
 
   @Post('verify')
-  // async verifyIdentity(@Body('email') email: string, @Body('token') token: string, @Body('type') type: EmailOtpType) {
-  //   return this.authService.verifyIdentity(email, token, type);
-  // }
-
   async verifyIdentity(@Body('token') token: string) {
-    return this.authService.verifyIdentity(token);
+    console.log('token', token, '\n\n')
+    return this.authService.verifyUser(token);
   }
 
   @Post('signin')
@@ -31,6 +27,16 @@ export class AuthController {
   async signOut() {
     return this.authService.signOut();
   }
+
+  @Post('session')
+  async session(@Body('token') token: string) {
+      return this.authService.userSession(token);
+  }
+
+  @Post('verify-token')
+    async verifyToken(@Body('token') token: string, @Body('uid') uid: string){
+        return this.authService.verifyToken(token, uid);
+    }
 
   // API Endpoint : POST http://localhost:3000/auth/signup
 }
