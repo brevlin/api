@@ -39,7 +39,8 @@ export class DatabaseService {
             .from(tableName)
             .select(columnName)
             .eq(rowName, rowValue)
-            .single();
+            .single()
+            .throwOnError();
 
         if (error) {
             return error;
@@ -62,6 +63,9 @@ export class DatabaseService {
     }
 
     async insertAndSelect(tableName: string, query: any) {
+        const session = await this.supabase.auth.getSession()
+        console.log(session);
+        
         const { data, error } = await this.supabase
             .from(tableName)
             .insert(query)
