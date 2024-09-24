@@ -10,6 +10,50 @@ export class DatabaseService {
         this.supabase = supabaseClient.getInstance();
     }
 
+    async findUserByEmail(email: string) {
+        const { data, error } = await this.supabase
+            .from('users')
+            .select('*')
+            .eq('email', email)
+            .single();
+
+        if (error) {
+            return error;
+        }
+
+        return data;
+    }
+
+    async findUserById(id: string) {
+        const { data, error } = await this.supabase
+            .from('users')
+            .select('*')
+            .eq('uid', id)
+            .single();
+
+        if (error) {
+            return error;
+        }
+
+        return data;
+    }
+
+    async findUserByPhone(phone: string) {
+        const { data, error } = await this.supabase
+            .from('users')
+            .select('*')
+            .eq('phone', phone)
+            .single();
+
+        if (error) {
+            return error;
+        }
+
+        return data;
+    }
+
+    // ! ___
+
     async selectAll(tableName: string) {
         const { data, error } = await this.supabase
             .from(tableName)
