@@ -47,3 +47,8 @@ filename = nom du fichier
 uid = id du fichier
 
 s = school
+
+controllers :
+- user
+- school
+- class

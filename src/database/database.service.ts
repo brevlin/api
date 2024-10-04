@@ -109,7 +109,7 @@ export class DatabaseService {
     async insertAndSelect(tableName: string, query: any) {
         const session = await this.supabase.auth.getSession()
         console.log(session);
-        
+
         const { data, error } = await this.supabase
             .from(tableName)
             .insert(query)
